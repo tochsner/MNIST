@@ -1,3 +1,7 @@
+"""
+Trains a simple neural network on MNIST classification, using my implementation.
+"""
+
 from data.MNIST import *
 from helper.hyperparameter import *
 from helper.NN import *

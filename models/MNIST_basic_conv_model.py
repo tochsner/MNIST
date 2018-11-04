@@ -1,4 +1,6 @@
-#builds a simple convolutional nerual network for MNIST classification
+"""
+Builds a simple convolutional nerual network for MNIST classification with keras.
+"""
 
 import keras
 from keras.models import Model
