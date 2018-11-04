@@ -59,7 +59,7 @@ def determine_neuron_impact(model, path, layer):
 
     for s in range(num_samples):
         model.getOutput(x_test[s])
-        activations[s] = model.Weights[layer].dot(model.Neurons[layer]) / model.Size[layer + 1]
+        activations[s] = model.Neurons[layer].dot(model.Weights[layer].T) / model.Size[layer + 1]
 
     std_of_activations = np.std(activations, axis=0)
 
@@ -86,7 +86,7 @@ def determine_neuron_impact_between_labels(model, path, layer):
     for l in range(num_labels):
         for sample in grouped_data[l]:
             model.getOutput(sample)
-            activations[l] += model.Weights[layer].dot(model.Neurons[layer]) / model.Size[layer + 1] / num_samples[l]
+            activations[l] += model.Neurons[layer].dot(model.Weights[layer].T) / model.Size[layer + 1] / num_samples[l]
 
     std_of_activations = np.std(activations, axis=0)
 
@@ -115,7 +115,7 @@ def determine_neuron_impact_in_label(model, path, layer):
 
         for s in range(num_samples[l]):
             model.getOutput(grouped_data[l][s])
-            activations_of_label[s] = model.Weights[layer].dot(model.Neurons[layer]) / model.Size[layer + 1]
+            activations_of_label[s] = model.Neurons[layer].dot(model.Weights[layer].T) / model.Size[layer + 1]
 
         std_of_activations[l] = np.std(activations_of_label, axis=0)
 
@@ -130,4 +130,4 @@ def determine_neuron_impact_in_label(model, path, layer):
 
 model = SimpleNeuronalNetwork((784, 10, 10), sigmoidActivation, sigmoidDerivation, MeanSquareCostFunction())
 model.load("saved_models/784-10-10")
-determine_neuron_activations(model, "saved_models/784-10-10", 1)
+determine_neuron_impact_in_label(model, "saved_models/784-10-10", 1)
