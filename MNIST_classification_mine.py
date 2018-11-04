@@ -14,13 +14,13 @@ def train_model():
     (x_train, y_train), (x_test, y_test) = prepare_data_for_tooc(data)
 
     hp = Hyperparameter()
-    hp.epochs = 20
-    hp.lr = 1
-    hp.r = 0.00002
+    hp.epochs = 50
+    hp.lr = 2
+    hp.r = 0.00001
 
     mse = MeanSquareCostFunction()
 
-    classifier = SimpleNeuronalNetwork((784, 100, 10), sigmoidActivation, sigmoidDerivation, mse)
+    classifier = SimpleNeuronalNetwork((784, 10, 10), sigmoidActivation, sigmoidDerivation, mse)
 
     for e in range(hp.epochs):
         for b in range(x_train.shape[0] // hp.batch_size):
@@ -38,5 +38,7 @@ def train_model():
             tests += 1
 
         print(accuracy / tests, flush = True)
+
+    classifier.save("saved_models/784-10-10")
 
 train_model()
