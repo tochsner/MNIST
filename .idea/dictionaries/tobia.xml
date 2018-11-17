@@ -2,6 +2,8 @@
   <dictionary name="tobia">
     <words>
       <w>backpropagate</w>
+      <w>conv</w>
+      <w>pretrained</w>
     </words>
   </dictionary>
 </component>

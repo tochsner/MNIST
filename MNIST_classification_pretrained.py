@@ -1,21 +1,22 @@
 """
-Trains a simple NN on MNIST classification, using keras.
+Trains a simple NN on MNIST classification, using keras. Uses a model pretrained with
+a quadruplet cross-digit encoder.
 """
 
 from data.MNIST import *
-from models.MNIST_basic_conv_model import *
+from models.MNIST_generative_conv_similarity import *
 from helper.hyperparameter import *
 
 
-def train_model():
+def train_model(pretrained_model_path, embedding_dimensions):
     data = load_data()
     (x_train, y_train), (x_test, y_test) = prepare_data_for_keras(data)
 
     hp = Hyperparameter()
-    hp.epochs = 50
-    #hp.optimizer = "adam"
+    hp.optimizer = "adam"
+    hp.epochs = 4
 
-    model = build_model()
+    model = build_model(embedding_dimensions, pretrained_model_path)
 
     model.compile(loss=hp.loss,
                   optimizer=hp.optimizer,
@@ -34,4 +35,4 @@ def train_model():
     return score
 
 
-train_model()
+train_model("C:/Users/tobia/Documents/Programmieren/AI/Few-Shot-Learning/saved_models/MNIST Generative Mine", 400)
