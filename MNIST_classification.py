@@ -12,8 +12,8 @@ def train_model():
     (x_train, y_train), (x_test, y_test) = prepare_data_for_keras(data)
 
     hp = Hyperparameter()
-    hp.epochs = 50
-    #hp.optimizer = "adam"
+    hp.epochs = 10
+    hp.optimizer = "adam"
 
     model = build_model()
 
