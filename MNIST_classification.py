@@ -13,7 +13,7 @@ def train_model():
 
     hp = Hyperparameter()
     hp.epochs = 10
-    hp.optimizer = "adam"
+    #hp.optimizer = "adam"
 
     model = build_model()
 
