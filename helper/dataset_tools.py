@@ -17,3 +17,17 @@ def group_data(data):
         grouped_data[label].append(x_data[sample])
 
     return grouped_data
+
+
+"""
+Shuffles x_data and y_data accordingly.
+"""
+def shuffle_data(data):
+    x_data, y_data = data
+
+    seed = random.randint(0, 1000)
+
+    np.random.seed(seed)
+    np.random.shuffle(x_data)
+    np.random.seed(seed)
+    np.random.shuffle(y_data)

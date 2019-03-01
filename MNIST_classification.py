@@ -2,8 +2,8 @@
 Trains a simple NN on MNIST classification, using keras.
 """
 
-from data.MNIST import *
-from models.MNIST_basic_conv_model import *
+from data.fashion_MNIST import *
+from models.MNIST_basic_dense_model import *
 from helper.hyperparameter import *
 
 
@@ -12,8 +12,8 @@ def train_model():
     (x_train, y_train), (x_test, y_test) = prepare_data_for_keras(data)
 
     hp = Hyperparameter()
-    hp.epochs = 10
-    #hp.optimizer = "adam"
+    hp.epochs = 30
+    hp.optimizer = "adam"
 
     model = build_model()
 
@@ -24,12 +24,12 @@ def train_model():
     model.fit(x_train, y_train,
               batch_size=hp.batch_size,
               epochs=hp.epochs,
-              verbose=1,
+              verbose=2,
               validation_data=(x_test, y_test))
 
-    score = Model.evaluate(x_test, y_test, verbose=0)
+    score = model.evaluate(x_test, y_test, verbose=0)
 
-    model.save_weights("saved_models/MNIST")
+    model.save_weights("saved_models/fashion_MNIST")
 
     return score
 

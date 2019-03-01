@@ -13,11 +13,10 @@ def build_model():
     num_classes = 10
 
     model = Sequential()
-    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=input_shape, name="conv_1"))
-    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', name="conv_2"))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
-    model.add(Dense(32 , activation='relu', name="dense"))
+    model.add(Dense(128, activation='relu', input_shape=input_shape, name="dense_1"))
+    model.add(Dense(64, activation='relu', name="dense_2"))
+    model.add(Dense(32, activation='relu', name="dense_3"))
     model.add(Dense(num_classes, activation='softmax', name="output"))
 
     return model

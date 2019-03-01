@@ -15,11 +15,11 @@ class NeuralSleep:
     def calculate_average_layer_entropy(self, samples, layer):
         num_samples = len(samples)
 
-        activations = np.zeros((num_samples, self.model.Size[layer]))
+        activations = np.zeros((num_samples, self.model.size[layer]))
 
         for s in range(num_samples):
-            self.model.getOutput(samples[s])
-            activations[s] = self.model.Neurons[layer]
+            self.model.get_output(samples[s])
+            activations[s] = self.model.neurons[layer]
 
         # bin activations
         activations = np.round(np.minimum(activations, 0.9), 1)

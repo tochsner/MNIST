@@ -1,4 +1,4 @@
 import numpy as np
 
-sigmoidActivation = lambda x: 1.0 / (1 + np.exp(-x))
-sigmoidDerivation = lambda x: x * (1 - x)
+sigmoid_activation = lambda x: 1.0 / (1 + np.exp(-x))
+sigmoid_derivation = lambda x: x * (1 - x)
