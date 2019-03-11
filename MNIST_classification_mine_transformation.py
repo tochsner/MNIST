@@ -2,7 +2,7 @@
 Trains a simple neural network on MNIST classification, using my implementation.
 """
 
-from data.fashion_MNIST import *
+from data.MNIST import *
 from helper.NN import *
 from helper.activations import *
 from helper.losses import *
